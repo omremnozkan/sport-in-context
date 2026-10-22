@@ -73,16 +73,16 @@ shapes = {
 
 body = f"""    <article>
       <div class="article-head">
+        <p class="callout">Originally published in November 2025</p>
         <p class="kicker">Finance</p>
         <h1>{TITLE}</h1>
         <p class="dek">How a club built on superstar spending finally conquered Europe without its superstars.</p>
-        <p class="meta"><span>By Ömer Emin Özkan</span><span><time datetime="2025-11">November 2025</time></span><span data-reading-time>— min read</span></p>
+        <p class="meta"><span><time datetime="2026-10">October 2026</time></span><span data-reading-time>— min read</span></p>
         {tags(["Finance", "Psychology", "History", "Data"])}
       </div>
 
       <details class="toc" open><summary>Contents</summary><ol></ol></details>
 
-      <div class="note"><strong>Originally written in November 2025,</strong> after PSG’s 2024–25 treble; time references describe that moment. The charts are rebuilt from the author’s own spreadsheets and are <strong>approximate</strong> (data: Transfermarkt).</div>
 
       <div class="prose">
         <p>On the 31st of May 2025, the final whistle of the Champions League was blown in Munich. The match between Luis Enrique’s Paris Saint-Germain and Simone Inzaghi’s Inter Milan, two of the finest teams in the world, ended with a historic 5–0 score. Never in a Champions League final had one side proved as dominant as the French team.</p>

@@ -312,6 +312,15 @@ sup.fn a { text-decoration: none; font-weight: 600; padding: 0 1px; }
 .tags { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .tags a { display: inline-block; padding: 7px 10px; }
 
+/* Callout: first row of an article (e.g. original publication date) */
+.callout {
+  display: inline-flex; align-items: center; gap: 10px; margin: 0 0 22px;
+  font: 600 .72rem/1 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--text);
+  background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent);
+  border-radius: 4px; padding: 10px 14px;
+}
+.callout::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+
 /* Sources lists */
 .src-head { font: 600 .72rem/1 var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 28px 0 10px; }
 .src-list { padding-left: 1.1em; font-size: .9rem; color: var(--text-2); }

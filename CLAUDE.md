@@ -66,11 +66,11 @@ evolution of the sport, US league economics (salary caps, Moneyball).
   Asset links carry `?v=N`: bump N when an image or icon changes.
 
 ## Articles (live)
-- `psg-making-of-champions.html` — featured. Tags: Finance (main), Psychology, History, Data. Written Nov 2025.
+- `psg-making-of-champions.html` — featured. Tags: Finance (main), Psychology, History, Data. Site date Oct 2026; callout "Originally published in November 2025".
   Charts use APPROXIMATE values read from the author's Google Sheets charts (Transfermarkt data); replace with exact figures when the sheet is shared.
-- `fabrizio-romano.html` — Tags: Media (main), Psychology. First published in MANMADE Magazine, Aug 2025 (credited in the note box).
+- `fabrizio-romano.html` — Tags: Media (main), Psychology. Site date Oct 2026; callout "Originally published in August 2025". No outlet named.
 - `sample-article.html` — lorem ipsum placeholder carrying all eight tags.
-- Author byline: Ömer Emin Özkan. Older pieces carry an "Originally written…" note instead of rewriting time references.
+- No author byline for now (meta = date · reading time). Republished pieces get a `.callout` as the first row of the article head: "Originally published in <Month> <Year>" and nothing else.
 - Press photos are never used (rights); visuals are our own charts and diagrams.
 
 ## Contact
