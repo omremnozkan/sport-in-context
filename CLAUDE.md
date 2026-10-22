@@ -40,6 +40,9 @@ evolution of the sport, US league economics (salary caps, Moneyball).
 - `assets/chart.js` — bar charts from a `data-series` JSON attribute, with hover + table view
 - `_headers` — Cloudflare caching rules
 
+## Contact
+contact.sportincontext@gmail.com (shown on about.html#contact; footers link there).
+
 ## Design
 - Logo (option 2B-2): wordmark "Sport in Context." in bold sans, "in" semibold green,
   green full stop, framed by four thin green viewfinder corners. Markup + CSS live in the
