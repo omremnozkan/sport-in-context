@@ -36,7 +36,7 @@ evolution of the sport, US league economics (salary caps, Moneyball).
 - Homepage: hero → one featured article → "Latest articles" (3 cards) → "All articles →" link.
 - `articles/index.html` — Articles page: equal tiles (whole tile clickable), newest first, each with lens kicker,
   title, one-line dek, date and reading time. Add a tile here for every new article.
-- Tags: the seven lenses are the tag set (data, finance, economics, history, politics, law, psychology).
+- Tags: eight tags = the seven lenses + media (data, finance, economics, history, politics, law, psychology, media).
   Each tile has `data-tags="finance law"` (lowercase, space-separated); the tile kicker shows the main lens.
   `assets/filter.js` powers the filter buttons above the tiles and reads `?tag=` from the URL.
   Each article lists its tags under author/date as `ul.tags` links to `./?tag=<tag>`; keep them in sync with its tile.
@@ -44,7 +44,15 @@ evolution of the sport, US league economics (salary caps, Moneyball).
 - `about.html` — About page (placeholder text; lens chips list the seven lenses)
 - `articles/<slug>.html` — one file per article (copy `sample-article.html` as a template)
 - `assets/style.css` — all styles and colour tokens
-- `assets/chart.js` — bar charts from a `data-series` JSON attribute, with hover + table view
+- `assets/chart.js` — charts from a `data-series` JSON attribute: `data-type="bar" | "diverging" | "line"`
+  (negatives OK), `data-prefix`/`data-suffix` for units, hover + keyboard tooltips, direct labels, data-table toggle.
+  Money in/out colours: `--in` (green) / `--out` (orange), pair validated for colour-blind readers.
+- `assets/pitch.js` — interactive pitch diagrams from a JSON config (`<script type="application/json">`):
+  states (e.g. two eras) with players matched by slot, animated switching, hover/focus player tooltips,
+  pressing arrows and "exposed" zones. Always caption as a simplified illustration, not tracking data.
+- Step sequences (`ol.steps` + `.step-detail`, handled by `article.js`): hover/tap a step to read its detail.
+- `tools/build/` — Python builders that generate article pages from a shared shell (`shell.py`).
+  Run `python3 tools/build/<article>.py`. Excluded from the live site.
 - `assets/article.js` — reading time (word count / 230) and the Contents list, built from `.prose h2[id]`
   (add `data-no-toc` to skip a heading, e.g. Sources)
 - Article template parts: kicker, h1, dek, `.meta` (author · <time> · reading time), Contents,
@@ -56,6 +64,14 @@ evolution of the sport, US league economics (salary caps, Moneyball).
 - `favicon.ico` at root (fallback for browsers without SVG favicon support)
 - `_headers` — Cloudflare caching rules: CSS/JS `no-cache` (revalidate, so design changes show at once); images cached 7 days.
   Asset links carry `?v=N`: bump N when an image or icon changes.
+
+## Articles (live)
+- `psg-making-of-champions.html` — featured. Tags: Finance (main), Psychology, History, Data. Written Nov 2025.
+  Charts use APPROXIMATE values read from the author's Google Sheets charts (Transfermarkt data); replace with exact figures when the sheet is shared.
+- `fabrizio-romano.html` — Tags: Media (main), Psychology. First published in MANMADE Magazine, Aug 2025 (credited in the note box).
+- `sample-article.html` — lorem ipsum placeholder carrying all eight tags.
+- Author byline: Ömer Emin Özkan. Older pieces carry an "Originally written…" note instead of rewriting time references.
+- Press photos are never used (rights); visuals are our own charts and diagrams.
 
 ## Contact
 contact.sportincontext@gmail.com (shown on about.html#contact; footers link there).
@@ -72,10 +88,11 @@ contact.sportincontext@gmail.com (shown on about.html#contact; footers link ther
 - Charts: one series = `--series-1`, thin bars with 4px rounded tops, 2px gaps,
   label only the key value, always a data-table toggle. Never dual axes.
 - Dot diagrams: inline SVG; team A `--dot-a` (blue), team B `--dot-b` (orange), passes dashed.
+- Hover language: viewfinder corners appear around tiles and the featured visual (echoing the logo); non-hovered chart marks dim; whole tiles/cards are clickable.
 
 ## Sustainability
 Static pages, system fonts, SVG over images, compress any photo (WebP), long cache headers,
 no trackers. Keep each page well under 200 KB.
 
 ## Status
-Prototype with lorem ipsum placeholders only; no real articles yet. Site tagline: "Sport, examined from every angle." First article not decided.
+Two real articles live (PSG featured, Romano) plus one placeholder. Homepage hero and About text are still placeholders. Next planned article: Brighton (outline drafted). Site tagline: "Sport, examined from every angle."

@@ -23,4 +23,24 @@
     });
     if (!toc.children.length) toc.closest(".toc").hidden = true;
   }
+
+  // 3) Step sequences: hover, focus or tap a step to read its detail.
+  document.querySelectorAll(".steps").forEach((list) => {
+    const out = document.getElementById(list.dataset.detail);
+    const buttons = [...list.querySelectorAll("button")];
+    const pick = (b) => {
+      buttons.forEach((x) => x.removeAttribute("aria-current"));
+      b.setAttribute("aria-current", "step");
+      out.replaceChildren();
+      const t = document.createElement("b");
+      t.textContent = b.dataset.title + ": ";
+      out.append(t, document.createTextNode(b.dataset.text));
+    };
+    buttons.forEach((b) => {
+      b.addEventListener("pointerenter", () => pick(b));
+      b.addEventListener("focus", () => pick(b));
+      b.addEventListener("click", () => pick(b));
+    });
+    if (buttons.length) pick(buttons[0]);
+  });
 })();

@@ -1,0 +1,198 @@
+import json, sys
+sys.path.insert(0, __file__.rsplit("/", 1)[0])
+import os
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+from shell import head, tags, related, foot, CARDS
+
+SLUG = "psg-making-of-champions"
+TITLE = "The Making of Champions: the rise of PSG and Luis Enrique’s genius"
+DESC = "How Paris Saint-Germain, built on superstar spending, finally won the Champions League without its superstars."
+
+seasons = ["11-12", "12-13", "13-14", "14-15", "15-16", "16-17", "17-18", "18-19", "19-20", "20-21", "21-22"]
+bought = [105, 148, 135, 49, 113, 132, 237, 260, 93, 59, 87]
+sold = [8, 3, 26, 1, 21, 57, 97, 112, 110, 1, 10]
+div = json.dumps([{"label": s, "up": u, "down": d} for s, u, d in zip(seasons, sold, bought)], separators=(",", ":"))
+net = json.dumps([{"label": s, "value": u - d} for s, u, d in zip(seasons, sold, bought)], separators=(",", ":"))
+
+P = lambda slot, x, y, t, name, pos: {"slot": slot, "x": x, "y": y, "t": t, "name": name, "pos": pos}
+shapes = {
+    "start": 1,
+    "states": [
+        {
+            "id": "2023", "label": "2022–23 · Superstars",
+            "note": "The superstar era, simplified: the front three stay high and press little, so the midfield sits deeper "
+                    "and the fullbacks push up like wingers, leaving space behind them for counter-attacks.",
+            "players": [
+                P("gk", 40, 195, "GD", "Gianluigi Donnarumma", "Goalkeeper"),
+                P("rb", 420, 335, "AH", "Achraf Hakimi", "Right-back, pushed up like a winger"),
+                P("cb1", 165, 150, "MQ", "Marquinhos", "Centre-back"),
+                P("cb2", 165, 240, "SR", "Sergio Ramos", "Centre-back"),
+                P("lb", 420, 55, "NM", "Nuno Mendes", "Left-back, pushed up like a winger"),
+                P("m1", 240, 155, "MV", "Marco Verratti", "Midfielder, defence-first role"),
+                P("m2", 240, 235, "VI", "Vitinha", "Midfielder, defence-first role"),
+                P("m3", 310, 195, "FR", "Fabián Ruiz", "Midfielder"),
+                P("rw", 495, 255, "LM", "Lionel Messi", "Forward"),
+                P("st", 525, 195, "KM", "Kylian Mbappé", "Forward"),
+                P("lw", 495, 135, "NJ", "Neymar Jr", "Forward"),
+            ],
+            "zones": [
+                {"x": 300, "y": 18, "w": 105, "h": 70, "label": "Exposed"},
+                {"x": 300, "y": 302, "w": 105, "h": 70, "label": "Exposed"},
+            ],
+            "arrows": [],
+        },
+        {
+            "id": "2025", "label": "2024–25 · Enrique’s team",
+            "note": "Luis Enrique’s team, simplified: a balanced midfield three, fullbacks who attack and recover, "
+                    "and a front line that presses from the front. Everyone defends.",
+            "players": [
+                P("gk", 40, 195, "GD", "Gianluigi Donnarumma", "Goalkeeper"),
+                P("rb", 385, 325, "AH", "Achraf Hakimi", "Right-back: attacks, then recovers"),
+                P("cb1", 160, 150, "MQ", "Marquinhos", "Centre-back"),
+                P("cb2", 160, 240, "WP", "Willian Pacho", "Centre-back"),
+                P("lb", 385, 65, "NM", "Nuno Mendes", "Left-back: attacks, then recovers"),
+                P("m1", 305, 132, "JN", "João Neves", "Midfielder, presses and covers"),
+                P("m2", 232, 195, "VI", "Vitinha", "Midfielder, sets the tempo"),
+                P("m3", 305, 258, "FR", "Fabián Ruiz", "Midfielder, tactical balance"),
+                P("rw", 468, 288, "DD", "Désiré Doué", "Forward"),
+                P("st", 432, 195, "OD", "Ousmane Dembélé", "Forward, leads the press"),
+                P("lw", 468, 102, "KK", "Khvicha Kvaratskhelia", "Forward"),
+            ],
+            "zones": [],
+            "arrows": [
+                {"from": [482, 102], "to": [548, 122], "kind": "press"},
+                {"from": [448, 195], "to": [540, 195], "kind": "press"},
+                {"from": [482, 288], "to": [548, 268], "kind": "press"},
+                {"from": [320, 132], "to": [380, 150], "kind": "press"},
+                {"from": [385, 310], "to": [300, 330], "kind": "run"},
+                {"from": [385, 80], "to": [300, 60], "kind": "run"},
+            ],
+        },
+    ],
+}
+
+body = f"""    <article>
+      <div class="article-head">
+        <p class="kicker">Finance</p>
+        <h1>{TITLE}</h1>
+        <p class="dek">How a club built on superstar spending finally conquered Europe without its superstars.</p>
+        <p class="meta"><span>By Ömer Emin Özkan</span><span><time datetime="2025-11">November 2025</time></span><span data-reading-time>— min read</span></p>
+        {tags(["Finance", "Psychology", "History", "Data"])}
+      </div>
+
+      <details class="toc" open><summary>Contents</summary><ol></ol></details>
+
+      <div class="note"><strong>Originally written in November 2025,</strong> after PSG’s 2024–25 treble; time references describe that moment. The charts are rebuilt from the author’s own spreadsheets and are <strong>approximate</strong> (data: Transfermarkt).</div>
+
+      <div class="prose">
+        <p>On the 31st of May 2025, the final whistle of the Champions League was blown in Munich. The match between Luis Enrique’s Paris Saint-Germain and Simone Inzaghi’s Inter Milan, two of the finest teams in the world, ended with a historic 5–0 score. Never in a Champions League final had one side proved as dominant as the French team.</p>
+        <p>For Luis Enrique, this was more than just a success story. It was his second treble, winning the league, the national cup and the European trophy, the first being with Barcelona in 2015. He dedicated this victory to his daughter Xana, who passed away in 2019 due to osteosarcoma. In 2015, it was Xana who carried the team’s flag onto the pitch after the victory. This time, thousands of fans carried flags with her name on them.</p>
+        <p>The emotional side of the story only amplifies the work and dedication behind this masterpiece. What did Luis Enrique and the squad change? After all, PSG had been contenders on the European stage for the last decade. But is it really that way? Why did PSG fail in the past, and what was done differently to reverse the pattern?</p>
+
+        <h2 id="from-merger-to-millions">From merger to millions</h2>
+        <p>No one expected Paris Saint-Germain to become the dominant team it is today. It has a relatively short history compared with other football giants: the then-humble club was born when two clubs, Paris FC and Stade Saint-Germain, merged in 1970. Since then, it has become the most decorated club in France, winning 55 trophies, including 13 Ligue 1 titles. In the 2000s, however, it went through a period of decline. Even with stars like the Brazilian legend Ronaldinho, it seemed as if the star of the best French team was falling.</p>
+        <p>What happened in 2011 changed the course of European football. Qatar Sports Investments (QSI), an investment company funded directly by the Emir of Qatar, bought a majority stake in the club in the summer of 2011, then acquired the remaining shares in 2012. Nasser Al-Khelaifi has been PSG’s president ever since, and massive funds have flowed in through sponsorship contracts, allowing PSG to spend unprecedented amounts on transfers and wages. The new owners had a simple mentality: spending big on star players would bring success.</p>
+
+        <h2 id="the-superteam-years">The superteam years</h2>
+        <p>From 2011, world-class players began flocking to PSG for big transfer fees: the legendary strikers Edinson Cavani and Zlatan Ibrahimović, the Brazilian defenders Thiago Silva and David Luiz, the Argentinian winger Ángel Di María and many more. The Qatari funds lifted the team’s quality dramatically, and PSG became the best club in France almost overnight, waking from a period of struggle to dominate domestic competitions and win Ligue 1 again and again.</p>
+      </div>
+
+      <figure>
+        <p class="fig-title">Spending vs selling, season by season</p>
+        <p class="fig-sub">PSG transfer fees paid and received, € million · hover a season for the net figure</p>
+        <div class="panel">
+          <div class="chart" data-type="diverging" data-prefix="€" data-suffix="m" data-xlabel="Season"
+               data-up-name="Sold" data-down-name="Bought"
+               data-title="PSG transfer fees paid and received per season, 2011-12 to 2021-22, approximate"
+               data-series='{div}'></div>
+        </div>
+        <figcaption>Approximate values rebuilt from the author’s chart. Source: Transfermarkt, PSG transfer history.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <p>Until 2017, however, Paris Saint-Germain failed to reach the ultimate goal of conquering Europe, despite a superteam and excellent coaches such as Carlo Ancelotti, Unai Emery and Laurent Blanc. In March of the 2016–17 season, PSG’s problems were laid bare in an unforgettable game. Under Unai Emery, the French side had beaten Barcelona 4–0 in the first leg of the knockout stage. It seemed PSG was finally ready to compete on the grand European stage, able to survive against the legendary MSN trio (Messi, Neymar, Suárez). In the second leg at Camp Nou, Barcelona shocked the world with a 6–1 comeback, with Sergi Roberto scoring a crucial goal in the 95th minute to knock the Parisians out. For President Nasser and the board, this signalled a lack of talent and quality.</p>
+
+        <h2 id="neymar-mbappe-messi">Neymar, Mbappé, Messi, and still no trophy</h2>
+        <p>The summer of 2017 brought two of the most expensive transfers in history, both by the French club. The release clause of Neymar Jr, one of the best players in the world and part of that Barcelona team, was activated, and he signed for a record-breaking €222 million. The French wonderkid Kylian Mbappé was loaned in from Monaco, with an option to buy for €180 million.</p>
+        <p>Even with these signings and one of the most powerful attacking trios in the world, PSG still couldn’t break the curse. In 2020, under Thomas Tuchel, they reached the Champions League final but lost 1–0 to Bayern Munich, with their own former academy player Kingsley Coman dealing the final blow. More players and new managers followed. Mauricio Pochettino was brought in to lead the team, and Sergio Ramos, one of the best defenders in history, arrived. Lionel Messi, arguably the best player in history, was signed from a Barcelona facing bankruptcy. Christophe Galtier was brought in as a last resort, but success at continental level still eluded PSG.</p>
+      </div>
+
+      <figure>
+        <p class="fig-title">A decade in the red</p>
+        <p class="fig-sub">Net transfer balance (fees received minus fees paid), € million · hover to read each season</p>
+        <div class="panel">
+          <div class="chart" data-type="line" data-prefix="€" data-suffix="m" data-xlabel="Season" data-name="Net balance"
+               data-title="PSG net transfer balance per season, 2011-12 to 2021-22, approximate"
+               data-series='{net}'></div>
+        </div>
+        <figcaption>Only one season of the eleven ends in profit. Approximate values; source: Transfermarkt.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <h2 id="a-change-of-mind">A change of mind</h2>
+        <p>From 2022, the club’s mentality began to shift. The 2020 final had exposed past mistakes: a superteam built on stats and money did not guarantee success, even in the short term. What was needed was to nurture young players, like the Kingsley Coman who had got away, and build a dynasty focused on sustainability and compatibility rather than individual ability.</p>
+        <p>To end the reliance on stars and reaffirm PSG’s role as a hub for young talent, the club hired Luis Campos as Football Advisor in the summer of 2022. The Portuguese scout continued his philosophy of giving chances to young players and judging them on live performances rather than statistics alone. His approach had helped Monaco and Lille to glory in France, and the board hoped he could do the same in Paris. Campos was crucial in signing many of the players behind PSG’s success, including Vitinha, Fabián Ruiz, Nuno Mendes, Gonçalo Ramos, Ousmane Dembélé and Bradley Barcola.</p>
+
+        <h2 id="why-the-stars-failed">Why the stars failed</h2>
+        <p>In previous PSG teams, several players with egocentric styles and huge individual ability had made the attack less efficient and the dressing room harder to manage, as the clashes between Mbappé and Neymar over team leadership showed. The superstars often held more influence over club decisions than the manager, as the French journalist Julien Laurens explained.<sup class="fn"><a href="#fn1" id="ref1" aria-label="Source 1">1</a></sup> Reliance on superstar egos undermined the importance of collective tactics, leading to isolated, individual play.</p>
+        <p>The most critical point, however, was that the attackers had already established their quality and didn’t feel the need to defend or press aggressively. This caused a chain reaction. Because the forwards gave little defensive help, the midfielders had to be more defence-oriented. To fill the width of the pitch and give the forwards creative support, the fullbacks were pushed into winger-like roles, which left the back line vulnerable to counter-attacks.</p>
+      </div>
+
+      <figure class="pitch" data-config="psg-shapes" data-title="PSG's shape in the superstar era compared with Luis Enrique's team">
+        <p class="fig-title">From superstars to a system</p>
+        <p class="fig-sub">Switch between the two eras · hover or tab through the players</p>
+        <div class="pitch-controls" role="group" aria-label="Choose an era"></div>
+        <div class="panel">
+          <div class="pitch-key">
+            <span><svg viewBox="0 0 26 10"><line x1="0" y1="5" x2="20" y2="5" stroke="#3fc495" stroke-width="2.2"/><path d="M18,1 L26,5 L18,9z" fill="#3fc495"/></svg>Pressing</span>
+            <span><svg viewBox="0 0 26 10"><line x1="0" y1="5" x2="20" y2="5" stroke="#b9b8b1" stroke-width="2.2" stroke-dasharray="4 3"/><path d="M18,1 L26,5 L18,9z" fill="#b9b8b1"/></svg>Recovery run</span>
+            <span><svg viewBox="0 0 26 10"><rect x="1" y="0" width="24" height="10" rx="2" fill="rgba(217,89,38,.12)" stroke="#d95926" stroke-dasharray="4 3"/></svg>Space exposed to counters</span>
+          </div>
+          <p class="pitch-note" aria-live="polite"></p>
+        </div>
+        <figcaption>Simplified illustration of the article’s argument, not tracking data. Attacking left to right.</figcaption>
+      </figure>
+      <script type="application/json" id="psg-shapes">{json.dumps(shapes, ensure_ascii=False)}</script>
+
+      <div class="prose">
+        <h2 id="luis-enrique-system">Luis Enrique’s system</h2>
+        <p>The aftermath of the 2022–23 season brought big changes. Lionel Messi and Neymar left for Inter Miami and Al-Hilal respectively, leaving Mbappé as the only superstar. A string of unstable managers also came to an end when PSG signed Luis Enrique, the renowned Spanish player and coach.</p>
+        <p>Enrique introduced a new tactical understanding in line with his philosophy: he balanced creativity with discipline. In his line-ups, positions were rigid, and a player could only move differently when it benefited the whole team. He also introduced competition by making sure every player had a backup in the squad. Contrary to some expectations, this did not breed petty behaviour; it motivated everyone to contribute more. He introduced new drills to help the team escape pressure and create attacking chances. If you didn’t press, help your defenders in critical moments or pass for everyone’s benefit, you couldn’t keep your place.</p>
+        <p>In a famous video published online, Enrique had a one-on-one talk with Mbappé. He explained that if Mbappé wanted to be a great player, he needed to become a true leader and be at the forefront of everything: giving his all in attack, then defending relentlessly.</p>
+
+        <h2 id="a-team-not-a-collection">A team, not a collection of stars</h2>
+        <p>Even after Kylian Mbappé left, having scored 44 goals in the 2023–24 season, Enrique was optimistic about PSG’s chances in Europe. He remarked: “I’d rather have four players who score 12 goals each than one who scores 40.” New arrivals such as Willian Pacho, Désiré Doué, João Neves and Khvicha Kvaratskhelia raised the squad’s quality and depth. The team lacked a superstar, but it made up for it in teamwork, resilience and stamina.</p>
+        <p>Ousmane Dembélé, a former wonderkid who had struggled at Barcelona with injuries and poor form, reinvented his career under Enrique. Once known as an individualist, he wore out opponents every game and became a team player. He became a superstar and a crucial part of the treble, going on to win the Ballon d’Or in September 2025. Désiré Doué shone throughout the season at just 19. João Neves and Vitinha, two Portuguese midfielders, became a dynamic duo holding the line in attack and defence, alongside the tactically astute Fabián Ruiz. Kvaratskhelia was one of the most explosive players in the team despite joining mid-season. Fullbacks Nuno Mendes and Achraf Hakimi drove the attack while still holding the back line, along with Gianluigi Donnarumma, who made critical saves game after game.</p>
+        <p>Throughout the season, every player gave everything for the team, constantly pressing opponents and escaping pressure themselves. They beat top sides like Liverpool, Inter, Aston Villa and Arsenal. In the end, it wasn’t superstars bought for incredible fees that won it: it was a team effort by young players, many previously unknown, who rose to the top of European football. That is the story of how Paris Saint-Germain became champions of Europe.</p>
+
+        <h2 id="sources" data-no-toc>Sources</h2>
+        <ol class="footnotes">
+          <li id="fn1">Julien Laurens and Mark Ogden, “How PSG let Mbappé, Messi and Neymar go, and got better,” <em>ESPN</em>, 29 May 2025. <a href="https://www.espn.com/soccer/story/_/id/45346944/psg-move-kylian-mbappe-lionel-messi-neymar-got-better-champions-league-final">Link</a> <a class="back" href="#ref1" aria-label="Back to text">↩</a></li>
+        </ol>
+        <h3 class="src-head">Further reading</h3>
+        <ul class="src-list">
+          <li>Benjamin Dodman, “Champions League final: how Luis Enrique stripped PSG of their stars, and made them better,” <em>France 24</em>, 30 May 2025. <a href="https://www.france24.com/en/sport/20250530-champions-league-final-luis-enrique-stripped-psg-stars-made-them-better-mbappe-inter">Link</a></li>
+          <li>Alexandre Lemarié, “How Paris Saint-Germain became a team,” <em>Le Monde</em>, 31 May 2025. <a href="https://www.lemonde.fr/en/sports/article/2025/05/31/how-paris-saint-germain-became-a-team_6741861_9.html">Link</a></li>
+          <li>Sandrine Morel, “Luis Enrique, the architect of PSG’s transformation,” <em>Le Monde</em>, 30 May 2025. <a href="https://www.lemonde.fr/en/sports/article/2025/05/30/luis-enrique-the-architect-of-psg-s-transformation_6741842_9.html">Link</a></li>
+          <li>Aymeric Mantoux, “How Paris Saint-Germain became one of the most desirable brands in the world,” <em>Luxury Tribune</em>, 19 August 2020. <a href="https://www.luxurytribune.com/en/how-paris-saint-germain-became-one-of-the-most-desirable-brands-in-the-world">Link</a></li>
+        </ul>
+        <h3 class="src-head">Video</h3>
+        <ul class="src-list">
+          <li>James Lawrence Allcott, “How PSG sold the world’s best players and got better,” YouTube, 7 March 2025. <a href="https://www.youtube.com/watch?v=q2--Pqs-uCA">Link</a></li>
+          <li>Christian on Football, “How did football’s ultimate super team fail?”, YouTube, 18 February 2025. <a href="https://www.youtube.com/watch?v=I10tOkav11U">Link</a></li>
+          <li>DeltaFootball, “How PSG might just finally win the Champions League,” YouTube, 25 March 2025. <a href="https://www.youtube.com/watch?v=IBd4sJNS6uw">Link</a></li>
+          <li>DeltaFootball, “The data behind PSG’s dominance this season,” YouTube, 24 May 2025. <a href="https://www.youtube.com/watch?v=F60heo7ePp8">Link</a></li>
+          <li>DK Falcon, “How a team of nobodies achieved what superstars couldn’t,” YouTube, 14 July 2025. <a href="https://www.youtube.com/watch?v=g1nYknl92wI">Link</a></li>
+          <li>Football Made Simple, “Tactical analysis: PSG 5–0 Inter Milan,” YouTube, 1 June 2025. <a href="https://www.youtube.com/watch?v=ZfrYdR7pyvM">Link</a></li>
+        </ul>
+        <h3 class="src-head">Data</h3>
+        <ul class="src-list">
+          <li>Transfermarkt, Paris Saint-Germain: all transfers (arrivals and departures from 2011–12). <a href="https://www.transfermarkt.com/fc-paris-saint-germain/alletransfers/verein/583">Link</a></li>
+        </ul>
+      </div>
+    </article>
+"""
+
+html = head(TITLE, DESC, SLUG) + body + related([CARDS["romano"], CARDS["sample"]]) + foot(["chart.js", "pitch.js", "article.js"])
+open(f"{ROOT}/articles/{SLUG}.html", "w").write(html)
+print("wrote", SLUG)
