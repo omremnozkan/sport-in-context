@@ -34,6 +34,7 @@ evolution of the sport, US league economics (salary caps, Moneyball).
 ## Structure
 - Navigation: Articles / About only (no topic sections).
 - `index.html` — homepage
+- `about.html` — About page (placeholder text; lens chips list the seven lenses)
 - `articles/<slug>.html` — one file per article (copy `sample-article.html` as a template)
 - `assets/style.css` — all styles and colour tokens
 - `assets/chart.js` — bar charts from a `data-series` JSON attribute, with hover + table view
