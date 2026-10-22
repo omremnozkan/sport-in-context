@@ -6,16 +6,18 @@
   <title>Lorem ipsum dolor sit amet · Sport in Context</title>
   <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
   <meta name="theme-color" content="#121417">
-  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="32x32">
+  <link rel="icon" href="../assets/favicon.svg?v=3" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../assets/icon-180.png">
   <meta property="og:site_name" content="Sport in Context">
   <meta property="og:image" content="https://sport-in-context.omremn-ozkan.workers.dev/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/style.css?v=3">
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap">
       <a class="wordmark" aria-label="Sport in Context, home" href="../index.html">Sport <span class="in">in</span> Context<span class="dot">.</span><i class="c tl" aria-hidden="true"></i><i class="c tr" aria-hidden="true"></i><i class="c bl" aria-hidden="true"></i><i class="c br" aria-hidden="true"></i></a>
@@ -26,23 +28,25 @@
     </div>
   </header>
 
-  <main class="wrap">
+  <main class="wrap" id="main">
     <article>
       <div class="article-head">
         <p class="kicker">Lorem · Ipsum</p>
         <h1>Lorem ipsum dolor sit amet, consectetur adipiscing</h1>
         <p class="dek">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p class="byline">By Ömer · Lorem 2026 · 12 min read</p>
+        <p class="meta"><span>By Ömer</span><span><time datetime="2026-10-22">22 October 2026</time></span><span data-reading-time>— min read</span></p>
       </div>
+
+      <details class="toc" open><summary>Contents</summary><ol></ol></details>
 
       <div class="note"><strong>Lorem ipsum:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div>
 
       <div class="prose">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<sup class="fn"><a href="#fn1" id="ref1" aria-label="Source 1">1</a></sup></p>
         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-        <h2>Lorem ipsum dolor</h2>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        <h2 id="lorem-ipsum-dolor">Lorem ipsum dolor</h2>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<sup class="fn"><a href="#fn2" id="ref2" aria-label="Source 2">2</a></sup></p>
       </div>
 
       <figure>
@@ -56,7 +60,7 @@
       </figure>
 
       <div class="prose">
-        <h2>Sit amet consectetur</h2>
+        <h2 id="sit-amet-consectetur">Sit amet consectetur</h2>
         <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
       </div>
 
@@ -102,17 +106,31 @@
       </figure>
 
       <div class="prose">
-        <h2>Adipiscing elit</h2>
-        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
-        <h2>Sources</h2>
-        <p>1. Lorem ipsum source (placeholder).<br>2. Dolor sit amet source (placeholder).</p>
+        <h2 id="adipiscing-elit">Adipiscing elit</h2>
+        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.<sup class="fn"><a href="#fn3" id="ref3" aria-label="Source 3">3</a></sup></p>
+        <h2 id="sources" data-no-toc>Sources</h2>
+        <ol class="footnotes">
+          <li id="fn1">Lorem ipsum, <em>Dolor Sit Amet Report</em>, 2026, p. 12. <a class="back" href="#ref1" aria-label="Back to text">↩</a></li>
+          <li id="fn2">Consectetur Adipiscing, “Sed do eiusmod”, <em>Tempor Journal</em>, 2025. <a class="back" href="#ref2" aria-label="Back to text">↩</a></li>
+          <li id="fn3">Ut enim ad minim veniam (official document), 2024, §4.2. <a class="back" href="#ref3" aria-label="Back to text">↩</a></li>
+        </ol>
       </div>
     </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <h2 class="section-title" id="related-title">Related articles</h2>
+      <div class="cards">
+        <article class="card"><p class="kicker">Lorem</p><h3><a href="sample-article.html">Lorem ipsum dolor sit amet consectetur</a></h3><p>Ut enim ad minim veniam, quis nostrud exercitation.</p></article>
+        <article class="card"><p class="kicker">Ipsum</p><h3><a href="sample-article.html">Sed ut perspiciatis unde omnis iste natus</a></h3><p>Nemo enim ipsam voluptatem quia voluptas sit.</p></article>
+        <article class="card"><p class="kicker">Dolor</p><h3><a href="sample-article.html">Quis autem vel eum iure reprehenderit</a></h3><p>Neque porro quisquam est, qui dolorem ipsum.</p></article>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="wrap"><span>© 2026 Sport in Context · <a href="../about.html#contact">Contact</a></span><span>Sport, examined from every angle</span></div>
   </footer>
-  <script src="../assets/chart.js" defer></script>
+  <script src="../assets/chart.js?v=3" defer></script>
+  <script src="../assets/article.js?v=3" defer></script>
 </body>
 </html>

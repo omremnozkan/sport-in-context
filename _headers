@@ -1,4 +1,13 @@
-/assets/*
+/assets/*.css
+  Cache-Control: public, no-cache
+
+/assets/*.js
+  Cache-Control: public, no-cache
+
+/assets/*.png
+  Cache-Control: public, max-age=604800
+
+/assets/*.svg
   Cache-Control: public, max-age=604800
 
 /*

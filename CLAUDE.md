@@ -38,7 +38,14 @@ evolution of the sport, US league economics (salary caps, Moneyball).
 - `articles/<slug>.html` — one file per article (copy `sample-article.html` as a template)
 - `assets/style.css` — all styles and colour tokens
 - `assets/chart.js` — bar charts from a `data-series` JSON attribute, with hover + table view
-- `_headers` — Cloudflare caching rules
+- `assets/article.js` — reading time (word count / 230) and the Contents list, built from `.prose h2[id]`
+  (add `data-no-toc` to skip a heading, e.g. Sources)
+- Article template parts: kicker, h1, dek, `.meta` (author · <time> · reading time), Contents,
+  note box, prose with footnote markers `<sup class="fn"><a href="#fnN" id="refN">N</a></sup>`,
+  `ol.footnotes` with ↩ back-links, Related articles cards.
+- `favicon.ico` at root (fallback for browsers without SVG favicon support)
+- `_headers` — Cloudflare caching rules: CSS/JS `no-cache` (revalidate, so design changes show at once); images cached 7 days.
+  Asset links carry `?v=N`: bump N when an image or icon changes.
 
 ## Contact
 contact.sportincontext@gmail.com (shown on about.html#contact; footers link there).
@@ -50,7 +57,8 @@ contact.sportincontext@gmail.com (shown on about.html#contact; footers link ther
   `assets/icon-180.png`, share image `assets/og.png` (1200x630).
 - `og:image` uses the absolute workers.dev URL: update it when the domain changes.
 - Dark theme only. Tokens live in `:root` in `style.css`.
-- Serif headings, system sans body, mono kickers.
+- One type family: system sans for headings and body (bold, tight headings to match the logo); mono only for kickers/labels. No serif.
+- Accessibility: visible `:focus-visible` outline (accent), "Skip to content" link on every page.
 - Charts: one series = `--series-1`, thin bars with 4px rounded tops, 2px gaps,
   label only the key value, always a data-table toggle. Never dual axes.
 - Dot diagrams: inline SVG; team A `--dot-a` (blue), team B `--dot-b` (orange), passes dashed.
