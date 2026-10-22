@@ -40,6 +40,11 @@ evolution of the sport, US league economics (salary caps, Moneyball).
 - `_headers` — Cloudflare caching rules
 
 ## Design
+- Logo (option 2B-2): wordmark "Sport in Context." in bold sans, "in" semibold green,
+  green full stop, framed by four thin green viewfinder corners. Markup + CSS live in the
+  header (`.wordmark`). Favicon `assets/favicon.svg` (corners + white dot), app icon
+  `assets/icon-180.png`, share image `assets/og.png` (1200x630).
+- `og:image` uses the absolute workers.dev URL: update it when the domain changes.
 - Dark theme only. Tokens live in `:root` in `style.css`.
 - Serif headings, system sans body, mono kickers.
 - Charts: one series = `--series-1`, thin bars with 4px rounded tops, 2px gaps,
