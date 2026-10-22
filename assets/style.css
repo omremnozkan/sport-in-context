@@ -210,6 +210,20 @@ sup.fn a { text-decoration: none; font-weight: 600; padding: 0 1px; }
 .tile .meta { margin-top: auto; padding-top: 8px; font-size: .8rem; }
 .all-link { margin: 20px 0 0; }
 
+/* Tag filters (Articles page) and tag chips (article pages) */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+.chip, .tags a {
+  font: 600 .72rem/1 var(--mono); text-transform: uppercase; letter-spacing: .1em;
+  color: var(--text-2); background: transparent; border: 1px solid var(--line);
+  border-radius: 4px; padding: 9px 12px; cursor: pointer; text-decoration: none;
+}
+.chip:hover, .tags a:hover { border-color: var(--accent); color: var(--text); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #0b0c0e; }
+.filter-status { font-size: .85rem; color: var(--muted); margin: 0 0 16px; min-height: 1.2em; }
+.tile[hidden] { display: none; }
+.tags { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.tags a { display: inline-block; padding: 7px 10px; }
+
 /* 404 */
 .notfound { padding-block: 72px 24px; max-width: 60ch; }
 .notfound h1 { font: 700 clamp(2rem, 5vw, 3.2rem)/1.08 var(--sans); letter-spacing: -.025em; margin: 0 0 16px; }

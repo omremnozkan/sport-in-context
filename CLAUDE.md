@@ -36,6 +36,10 @@ evolution of the sport, US league economics (salary caps, Moneyball).
 - Homepage: hero → one featured article → "Latest articles" (3 cards) → "All articles →" link.
 - `articles/index.html` — Articles page: equal tiles (whole tile clickable), newest first, each with lens kicker,
   title, one-line dek, date and reading time. Add a tile here for every new article.
+- Tags: the seven lenses are the tag set (data, finance, economics, history, politics, law, psychology).
+  Each tile has `data-tags="finance law"` (lowercase, space-separated); the tile kicker shows the main lens.
+  `assets/filter.js` powers the filter buttons above the tiles and reads `?tag=` from the URL.
+  Each article lists its tags under author/date as `ul.tags` links to `./?tag=<tag>`; keep them in sync with its tile.
 - `index.html` — homepage
 - `about.html` — About page (placeholder text; lens chips list the seven lenses)
 - `articles/<slug>.html` — one file per article (copy `sample-article.html` as a template)
