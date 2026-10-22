@@ -32,7 +32,10 @@ evolution of the sport, US league economics (salary caps, Moneyball).
 - Railway only if a backend feature is ever needed (none planned yet).
 
 ## Structure
-- Navigation: Articles / About only (no topic sections).
+- Navigation: Articles (→ `articles/`, the full list) / About. No topic sections.
+- Homepage: hero → one featured article → "Latest articles" (3 cards) → "All articles →" link.
+- `articles/index.html` — Articles page: equal tiles (whole tile clickable), newest first, each with lens kicker,
+  title, one-line dek, date and reading time. Add a tile here for every new article.
 - `index.html` — homepage
 - `about.html` — About page (placeholder text; lens chips list the seven lenses)
 - `articles/<slug>.html` — one file per article (copy `sample-article.html` as a template)
