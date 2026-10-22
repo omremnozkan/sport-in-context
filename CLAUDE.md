@@ -19,19 +19,19 @@ State only what is documented or officially found. Name the source. For open cas
 say "the commission found…" and note any appeal. Never assert wrongdoing beyond the record.
 
 ## Planned topics
-Man City finances and the Premier League case (first article), Brighton's model,
+Man City finances and the Premier League case, Brighton's model,
 PSG transfer policy, football ultras, Fabrizio Romano, Barcelona and Catalan nationalism,
 Tito and Yugoslav football, Mourinho, Total Football (dot diagrams), biology and the
 evolution of the sport, US league economics (salary caps, Moneyball).
 
 ## Tech
 - Plain HTML + one CSS file + tiny vanilla JS. No frameworks, no external fonts or scripts.
-- Hosted on Cloudflare Pages from this GitHub repo (no build step; output dir = root).
+- Hosted on Cloudflare (Workers static assets, sport-in-context.omremn-ozkan.workers.dev), auto-deployed from this repo. `.assetsignore` keeps CLAUDE.md and README.md off the live site.
 - Railway only if a backend feature is ever needed (none planned yet).
 
 ## Structure
 - `index.html` — homepage
-- `articles/<slug>.html` — one file per article (copy `man-city-billion.html` as a template)
+- `articles/<slug>.html` — one file per article (copy `sample-article.html` as a template)
 - `assets/style.css` — all styles and colour tokens
 - `assets/chart.js` — bar charts from a `data-series` JSON attribute, with hover + table view
 - `_headers` — Cloudflare caching rules
@@ -48,4 +48,4 @@ Static pages, system fonts, SVG over images, compress any photo (WebP), long cac
 no trackers. Keep each page well under 200 KB.
 
 ## Status
-Prototype with lorem ipsum placeholders. Site tagline not decided yet.
+Prototype with lorem ipsum placeholders only; no real articles yet. First article and site tagline not decided.
