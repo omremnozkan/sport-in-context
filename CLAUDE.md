@@ -50,4 +50,4 @@ Static pages, system fonts, SVG over images, compress any photo (WebP), long cac
 no trackers. Keep each page well under 200 KB.
 
 ## Status
-Prototype with lorem ipsum placeholders only; no real articles yet. First article and site tagline not decided.
+Prototype with lorem ipsum placeholders only; no real articles yet. Site tagline: "Sport, examined from every angle." First article not decided.
