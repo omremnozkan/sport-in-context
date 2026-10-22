@@ -43,6 +43,9 @@ evolution of the sport, US league economics (salary caps, Moneyball).
 - Article template parts: kicker, h1, dek, `.meta` (author · <time> · reading time), Contents,
   note box, prose with footnote markers `<sup class="fn"><a href="#fnN" id="refN">N</a></sup>`,
   `ol.footnotes` with ↩ back-links, Related articles cards.
+- `404.html` — shown for any missing page (enabled by `wrangler.jsonc` → `not_found_handling: "404-page"`); uses absolute `/` paths
+- `_redirects` — old URL → new URL (301). Add a line whenever an article is renamed or moved.
+- `wrangler.jsonc` — Cloudflare Worker config (name must stay `sport-in-context`); excluded from the live site via `.assetsignore`
 - `favicon.ico` at root (fallback for browsers without SVG favicon support)
 - `_headers` — Cloudflare caching rules: CSS/JS `no-cache` (revalidate, so design changes show at once); images cached 7 days.
   Asset links carry `?v=N`: bump N when an image or icon changes.

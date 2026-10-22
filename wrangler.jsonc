@@ -1,0 +1,10 @@
+// Cloudflare settings for the static site.
+// "404-page" makes Cloudflare serve 404.html whenever a page doesn't exist.
+{
+  "name": "sport-in-context",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": ".",
+    "not_found_handling": "404-page"
+  }
+}
