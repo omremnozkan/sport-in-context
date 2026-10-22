@@ -32,6 +32,7 @@ evolution of the sport, US league economics (salary caps, Moneyball).
 - Railway only if a backend feature is ever needed (none planned yet).
 
 ## Structure
+- Navigation: Articles / About only (no topic sections).
 - `index.html` — homepage
 - `articles/<slug>.html` — one file per article (copy `sample-article.html` as a template)
 - `assets/style.css` — all styles and colour tokens
