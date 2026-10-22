@@ -3,7 +3,9 @@
 Read this first in every session. Update it whenever a decision changes.
 
 ## What the site is
-Long-form sports analysis: the game through data, money, law, politics and history.
+Long-form sports analysis through many lenses: data, finance, economics, history,
+politics, law and psychology. No single-subject focus; lenses mix within articles
+rather than living in strictly separate sections.
 Football first; basketball and US sports as "Beyond Football" and for comparisons
 (e.g. closed leagues with salary caps vs open pyramids with financial rules).
 No news section.
